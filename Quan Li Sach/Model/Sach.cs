@@ -13,16 +13,15 @@ namespace Quan_Li_Sach.Model
         public string tacGia { get; set; }
         public string theLoai { get; set; }
         public float donGia { get; set; }
-        public int soLuong { get; set; }
-
-        public Sach(int maSach, string tenSach, string tacGia, string theLoai, float donGia, int soLuong)
+        public DateTime ngayPhatHanh { get; set; }
+        public Sach(int maSach, string tenSach, string tacGia, string theLoai, float donGia, DateTime ngayPhatHanh)
         {
             this.maSach = maSach;
             this.tenSach = tenSach;
             this.tacGia = tacGia;
             this.theLoai = theLoai;
             this.donGia = donGia;
-            this.soLuong = soLuong;
+            this.ngayPhatHanh = ngayPhatHanh;
         }
     }
 }

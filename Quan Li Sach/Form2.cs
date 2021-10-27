@@ -23,9 +23,13 @@ namespace Quan_Li_Sach
 
         private void button_them_Click(object sender, EventArgs e)
         {
-            database.insert(new Sach(0, textBox_tenSach.Text.ToString(), textBox_tacGia.Text, textBox_theLoai.Text, float.Parse(textBox_donGia.Text.ToString()), int.Parse(numericUpDown_soLuong.Value.ToString())));
-            inDS();
-            chuyenGiaTriVeNull();
+            if (checkNull())
+            {
+                database.insert(new Sach(0, textBox_tenSach.Text.ToString(), textBox_tacGia.Text, textBox_theLoai.Text, float.Parse(textBox_donGia.Text.ToString()), dateTimePicker_ngayPH.Value));
+                inDS();
+                chuyenGiaTriVeNull();
+            }
+
         }
 
         private void inDS()
@@ -36,9 +40,13 @@ namespace Quan_Li_Sach
 
         private void button_xoa_Click(object sender, EventArgs e)
         {
-            database.delete(int.Parse(textBox_maSach.Text));
-            inDS();
-            chuyenGiaTriVeNull();
+            if (checkNull())
+            {
+                database.delete(int.Parse(textBox_maSach.Text));
+                inDS();
+                chuyenGiaTriVeNull();
+            }
+            
         }
 
 
@@ -49,35 +57,82 @@ namespace Quan_Li_Sach
             textBox_tacGia.Text = "";
             textBox_theLoai.Text = "";
             textBox_donGia.Text = "";
-            numericUpDown_soLuong.Value = 0;
         }
 
-        private void dataGridView_bangSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
+       
+        private void click(DataGridViewCellEventArgs e)
         {
             textBox_maSach.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[0].Value.ToString().Trim();
             textBox_tenSach.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[1].Value.ToString().Trim();
             textBox_tacGia.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[2].Value.ToString().Trim();
             textBox_theLoai.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[3].Value.ToString().Trim();
             textBox_donGia.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[4].Value.ToString().Trim();
-            numericUpDown_soLuong.Value = decimal.Parse(dataGridView_bangSach.Rows[e.RowIndex].Cells[5].Value.ToString());
         }
 
         private void button_sua_Click(object sender, EventArgs e)
         {
-            database.update(new Sach(int.Parse(textBox_maSach.Text), textBox_tenSach.Text.ToString(), textBox_tacGia.Text, textBox_theLoai.Text, float.Parse(textBox_donGia.Text.ToString()), int.Parse(numericUpDown_soLuong.Value.ToString())));
-            inDS();
-            chuyenGiaTriVeNull();
+            if (checkNull())
+            {
+                database.update(new Sach(int.Parse(textBox_maSach.Text), textBox_tenSach.Text.ToString(), textBox_tacGia.Text, textBox_theLoai.Text, float.Parse(textBox_donGia.Text.ToString()), dateTimePicker_ngayPH.Value));
+                inDS();
+                chuyenGiaTriVeNull();
+            }
+           
         }
 
         private void button_logOut_Click(object sender, EventArgs e)
         {
-            DialogResult dl = MessageBox.Show("Bạn muốn đăng xuất?", "Thông báo!!!", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            DialogResult dl = MessageBox.Show("Bạn muốn đăng xuất?", "Thông báo!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dl != DialogResult.No)
             {
                 this.Close();
             }
+        }
+        private bool checkNull()
+        {
+            if (textBox_tenSach.Text.ToString().Trim().Equals(""))
+            {
+                MessageBox.Show("Tên sách không được rỗng!","THÔNG BÁO!!!");
+                return false;
+            }
+            if (textBox_tacGia.Text.ToString().Trim().Equals(""))
+            {
+                MessageBox.Show("Tác giả không được rỗng!", "THÔNG BÁO!!!");
+                return false;
+            }
+
+            if (textBox_theLoai.Text.ToString().Trim().Equals(""))
+            {
+                MessageBox.Show("Thể loại không được rỗng!", "THÔNG BÁO!!!");
+                return false;
+            }
+            if (textBox_donGia.Text.ToString().Trim().Equals(""))
+                {
+                    MessageBox.Show("Đơn giá không được rỗng!", "THÔNG BÁO!!!");
+                    return false;
+            }
+           
+            if (dateTimePicker_ngayPH.Text.Equals(""))
+            {
+                MessageBox.Show("Ngày phát hành không được rỗng!", "THÔNG BÁO!!!");
+                return false;
+            }
 
 
+            return true;
+        }
+
+        private void kiemTraNhap(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void clickConTent(object sender, DataGridViewCellEventArgs e)
+        {
+            click(e);
         }
     }
 }

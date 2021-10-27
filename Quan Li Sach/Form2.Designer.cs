@@ -46,11 +46,10 @@
             this.textBox_donGia = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown_soLuong = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
+            this.dateTimePicker_ngayPH = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_bangSach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_soLuong)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,7 +67,7 @@
             this.dataGridView_bangSach.Name = "dataGridView_bangSach";
             this.dataGridView_bangSach.Size = new System.Drawing.Size(640, 159);
             this.dataGridView_bangSach.TabIndex = 0;
-            this.dataGridView_bangSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_bangSach_CellContentClick);
+            this.dataGridView_bangSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clickConTent);
             // 
             // button_logOut
             // 
@@ -152,7 +151,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(308, 137);
+            this.label3.Location = new System.Drawing.Point(299, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 7;
@@ -170,7 +169,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(305, 88);
+            this.label5.Location = new System.Drawing.Point(299, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 9;
@@ -193,14 +192,14 @@
             // 
             // textBox_tacGia
             // 
-            this.textBox_tacGia.Location = new System.Drawing.Point(360, 81);
+            this.textBox_tacGia.Location = new System.Drawing.Point(351, 81);
             this.textBox_tacGia.Name = "textBox_tacGia";
             this.textBox_tacGia.Size = new System.Drawing.Size(134, 20);
             this.textBox_tacGia.TabIndex = 12;
             // 
             // textBox_theLoai
             // 
-            this.textBox_theLoai.Location = new System.Drawing.Point(360, 130);
+            this.textBox_theLoai.Location = new System.Drawing.Point(351, 130);
             this.textBox_theLoai.Name = "textBox_theLoai";
             this.textBox_theLoai.Size = new System.Drawing.Size(134, 20);
             this.textBox_theLoai.TabIndex = 13;
@@ -211,6 +210,7 @@
             this.textBox_donGia.Name = "textBox_donGia";
             this.textBox_donGia.Size = new System.Drawing.Size(108, 20);
             this.textBox_donGia.TabIndex = 16;
+            this.textBox_donGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.kiemTraNhap);
             // 
             // label6
             // 
@@ -224,37 +224,37 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(593, 137);
+            this.label7.Location = new System.Drawing.Point(559, 137);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Số lượng";
-            // 
-            // numericUpDown_soLuong
-            // 
-            this.numericUpDown_soLuong.Location = new System.Drawing.Point(656, 135);
-            this.numericUpDown_soLuong.Name = "numericUpDown_soLuong";
-            this.numericUpDown_soLuong.Size = new System.Drawing.Size(108, 20);
-            this.numericUpDown_soLuong.TabIndex = 18;
+            this.label7.Text = "Ngày phát hành";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Blue;
-            this.label8.Location = new System.Drawing.Point(305, 0);
+            this.label8.Location = new System.Drawing.Point(248, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(161, 31);
+            this.label8.Size = new System.Drawing.Size(286, 31);
             this.label8.TabIndex = 19;
-            this.label8.Text = "Quản lí sách";
+            this.label8.Text = "Phần mềm quản lí sách";
+            // 
+            // dateTimePicker_ngayPH
+            // 
+            this.dateTimePicker_ngayPH.Location = new System.Drawing.Point(656, 131);
+            this.dateTimePicker_ngayPH.Name = "dateTimePicker_ngayPH";
+            this.dateTimePicker_ngayPH.Size = new System.Drawing.Size(108, 20);
+            this.dateTimePicker_ngayPH.TabIndex = 20;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dateTimePicker_ngayPH);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.numericUpDown_soLuong);
             this.Controls.Add(this.textBox_donGia);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -278,7 +278,6 @@
             this.Text = "Form2";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_bangSach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_soLuong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,7 +303,7 @@
         private System.Windows.Forms.TextBox textBox_donGia;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown_soLuong;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_ngayPH;
     }
 }

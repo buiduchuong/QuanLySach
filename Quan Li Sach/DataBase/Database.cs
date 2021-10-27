@@ -8,26 +8,26 @@ namespace Quan_Li_Sach.DataBase
     class Database
     {
         SqlConnection sql = new SqlConnection(Properties.Settings.Default.Database);
-        SqlCommand sqlCommand;1.
+        SqlCommand sqlCommand;
 
         public void insert(Sach sach)
         {
             sql.Open();
-            sqlCommand = new SqlCommand("INSERT INTO [dbo].[sach] ([tenSach], [tacGia], [theLoai], [donGia], [soLuong]) VALUES ('" + sach.tenSach + "', '" + sach.tacGia + "', '" + sach.theLoai + "','" + sach.donGia + "','" + sach.soLuong + "')", sql);
+            sqlCommand = new SqlCommand("INSERT INTO [dbo].[Book] ([tenSach], [tacGia], [theLoai], [donGia], [ngayPhatHanh]) VALUES (N'" + sach.tenSach + "', N'" + sach.tacGia + "', N'" + sach.theLoai + "','" + sach.donGia + "','" + sach.ngayPhatHanh + "')", sql);
             sqlCommand.ExecuteNonQuery();
             sql.Close();
         }
         public void delete(int maSach)
         {
             sql.Open();
-            sqlCommand = new SqlCommand("DELETE FROM [dbo].[sach] WHERE maSach =" + maSach, sql);
+            sqlCommand = new SqlCommand("DELETE FROM [dbo].[Book] WHERE maSach =" + maSach, sql);
             sqlCommand.ExecuteNonQuery();
             sql.Close();
         }
         public void update(Sach sach)
         {
             sql.Open();
-            sqlCommand = new SqlCommand("UPDATE [dbo].[sach] SET[tenSach] = '" + sach.tenSach + "',[tacGia] = '" + sach.tacGia + "',[theLoai] = '" + sach.theLoai + "',[donGia] = '" + sach.donGia + "',[soLuong] = '" + sach.soLuong + "' WHERE maSach =" + sach.maSach, sql);
+            sqlCommand = new SqlCommand("UPDATE [dbo].[Book] SET[tenSach] = N'" + sach.tenSach + "',[tacGia] = N'" + sach.tacGia + "',[theLoai] = N'" + sach.theLoai + "',[donGia] = N'" + sach.donGia + "',[ngayPhatHanh] = N'" + sach.ngayPhatHanh + "' WHERE maSach =" + sach.maSach, sql);
             sqlCommand.ExecuteNonQuery();
             sql.Close();
         }
@@ -35,7 +35,7 @@ namespace Quan_Li_Sach.DataBase
         {
             DataTable data = new DataTable();
             sql.Open();
-            sqlCommand = new SqlCommand("SELECT [maSach] as 'Mã sách',[tenSach] as 'Tên sách',[tacGia] as 'Tác giả',[theLoai] as 'Thể loại',[donGia] as 'Đơn giá',[soLuong] as 'Số lượng' FROM[dbo].[sach]", sql);
+            sqlCommand = new SqlCommand("SELECT [maSach] as 'Mã sách',[tenSach] as 'Tên sách',[tacGia] as 'Tác giả',[theLoai] as 'Thể loại',[donGia] as 'Đơn giá',[ngayPhatHanh] as 'Ngày phát hành' FROM[dbo].[Book]", sql);
             SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
             dataAdapter.Fill(data);
             sql.Close();
