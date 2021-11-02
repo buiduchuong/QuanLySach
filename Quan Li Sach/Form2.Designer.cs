@@ -65,7 +65,7 @@
             this.dataGridView_bangSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_bangSach.Location = new System.Drawing.Point(49, 3);
             this.dataGridView_bangSach.Name = "dataGridView_bangSach";
-            this.dataGridView_bangSach.Size = new System.Drawing.Size(640, 159);
+            this.dataGridView_bangSach.Size = new System.Drawing.Size(655, 159);
             this.dataGridView_bangSach.TabIndex = 0;
             this.dataGridView_bangSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clickConTent);
             // 
@@ -243,10 +243,13 @@
             // 
             // dateTimePicker_ngayPH
             // 
+            this.dateTimePicker_ngayPH.CustomFormat = "";
+            this.dateTimePicker_ngayPH.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker_ngayPH.Location = new System.Drawing.Point(656, 131);
             this.dateTimePicker_ngayPH.Name = "dateTimePicker_ngayPH";
             this.dateTimePicker_ngayPH.Size = new System.Drawing.Size(108, 20);
             this.dateTimePicker_ngayPH.TabIndex = 20;
+            this.dateTimePicker_ngayPH.Value = new System.DateTime(2021, 11, 2, 8, 26, 44, 0);
             // 
             // Form2
             // 

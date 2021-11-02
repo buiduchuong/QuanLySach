@@ -67,6 +67,7 @@ namespace Quan_Li_Sach
             textBox_tacGia.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[2].Value.ToString().Trim();
             textBox_theLoai.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[3].Value.ToString().Trim();
             textBox_donGia.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[4].Value.ToString().Trim();
+            dateTimePicker_ngayPH.Text = dataGridView_bangSach.Rows[e.RowIndex].Cells[5].Value.ToString().Trim();
         }
 
         private void button_sua_Click(object sender, EventArgs e)
